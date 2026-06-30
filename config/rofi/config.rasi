@@ -1,0 +1,15 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    font: "JetBrainsMono Nerd Font 11";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "Apps";
+    drun-display-format: "{name}";
+    terminal: "kitty";
+    theme: "sewerwave";
+}
+
+@import "themes/sewerwave.rasi"

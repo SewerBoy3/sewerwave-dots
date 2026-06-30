@@ -1,0 +1,62 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json-schema.json",
+  "logo": {
+    "type": "file",
+    "source": "sewerboy.txt",
+    "color": {
+      "1": "#B79CED",
+      "2": "#8FD3E8",
+      "3": "#F0B8D0",
+      "4": "#D98C8C"
+    },
+    "padding": {
+      "top": 1,
+      "left": 2,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "#9C90B5",
+      "title": "#B79CED"
+    }
+  },
+  "modules": [
+    {
+      "type": "title",
+      "key": " ",
+      "format": "{user-name-colored}@{host-name-colored}"
+    },
+    "separator",
+    {
+      "type": "os",
+      "key": "OS"
+    },
+    {
+      "type": "kernel",
+      "key": "Kernel"
+    },
+    {
+      "type": "uptime",
+      "key": "Uptime"
+    },
+    {
+      "type": "wm",
+      "key": "WM"
+    },
+    {
+      "type": "shell",
+      "key": "Shell"
+    },
+    {
+      "type": "memory",
+      "key": "RAM"
+    },
+    {
+      "type": "cpu",
+      "key": "CPU",
+      "showPeCoreCount": true
+    }
+  ]
+}

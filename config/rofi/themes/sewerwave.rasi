@@ -1,0 +1,112 @@
+/**
+ * sewerwave-dots — rofi Sewerwave Pastel theme
+ */
+
+* {
+    bg:     #221D33;
+    bg-alt: #1A1626;
+    fg:     #E8E1F5;
+    fg-muted: #9C90B5;
+    accent: #B79CED;
+    border: #3A3354;
+    red:    #D98C8C;
+    cyan:   #8FD3E8;
+    pink:   #F0B8D0;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    location:     center;
+    width:        36em;
+    border:       2px;
+    border-color: @border;
+    border-radius: 10px;
+    background-color: @bg;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing:  8px;
+    padding:  12px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    spacing:  8px;
+    padding:  4px 8px;
+    border-radius: 8px;
+    background-color: @bg-alt;
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    placeholder: "Search…";
+    placeholder-color: @fg-muted;
+}
+
+listview {
+    lines: 8;
+    spacing: 4px;
+    fixed-height: true;
+}
+
+element {
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+element normal.normal {
+    background-color: @bg;
+    text-color: @fg;
+}
+
+element normal.active {
+    background-color: @bg-alt;
+    text-color: @cyan;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg-alt;
+}
+
+element selected.active {
+    background-color: @accent;
+    text-color: @bg-alt;
+}
+
+element-icon {
+    size: 1.2em;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
+
+message {
+    border: 1px solid @border;
+    border-radius: 8px;
+    background-color: @bg-alt;
+    padding: 8px;
+}
+
+textbox {
+    text-color: @fg;
+}
+
+button, button selected {
+    background-color: @bg-alt;
+    text-color: @fg-muted;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+button selected {
+    background-color: @accent;
+    text-color: @bg-alt;
+}

@@ -1,0 +1,26 @@
+# Build / install artifacts
+*.log
+.sewerwave-install.log
+
+# Backups created during install
+.config-backup-*
+
+# Cache
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Generated at install time (optional; pre-built copy may exist in repo)
+# assets/wallpapers/sewerwave-default.png
+
+# Paru build cache
+paru-build/

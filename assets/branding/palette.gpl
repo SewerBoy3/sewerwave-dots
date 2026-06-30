@@ -1,0 +1,15 @@
+GIMP Palette
+Name: Sewerwave Pastel
+Columns: 4
+#
+ 26  22  38	Sewer-bg
+ 34  29  51	Sewer-bg-alt
+ 58  51  84	Sewer-border
+232 225 245	Sewer-fg
+156 144 181	Sewer-fg-muted
+183 156 237	Sewer-accent-purple
+217 140 140	Sewer-accent-red
+143 211 232	Sewer-accent-cyan
+240 184 208	Sewer-accent-pink
+168 217 176	Sewer-accent-green
+232 217 160	Sewer-accent-yellow

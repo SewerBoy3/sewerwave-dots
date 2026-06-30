@@ -1,0 +1,17 @@
+{
+  "name": "Sewerwave Pastel",
+  "brand": "Sewer boy",
+  "tokens": {
+    "bg": "#1A1626",
+    "bg-alt": "#221D33",
+    "border-inactive": "#3A3354",
+    "fg": "#E8E1F5",
+    "fg-muted": "#9C90B5",
+    "accent-purple": "#B79CED",
+    "accent-red": "#D98C8C",
+    "accent-cyan": "#8FD3E8",
+    "accent-pink": "#F0B8D0",
+    "accent-green": "#A8D9B0",
+    "accent-yellow": "#E8D9A0"
+  }
+}

@@ -1,0 +1,29 @@
+# sewerwave-dots — Starship prompt (minimal modules for speed)
+
+format = """
+$directory$git_branch$git_status$nodejs
+$character"""
+
+[character]
+success_symbol = "[❯](bold #B79CED)"
+error_symbol = "[❯](bold #D98C8C)"
+
+[directory]
+style = "bold #8FD3E8"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+style = "bold #B79CED"
+
+[git_status]
+style = "bold #F0B8D0"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[nodejs]
+format = "via [$symbol($version )]($style)"
+style = "bold #A8D9B0"
+symbol = " "
+detect_files = ["package.json"]
+detect_folders = ["node_modules"]

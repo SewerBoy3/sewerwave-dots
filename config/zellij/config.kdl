@@ -1,0 +1,38 @@
+// sewerwave-dots — Zellij multiplexer theme
+
+default_layout "compact"
+
+keybinds {
+    shared {
+        bind "Ctrl g" { SwitchToMode "locked"; }
+    }
+}
+
+themes {
+    sewerwave {
+        fg 221 225 245
+        bg 26 22 38
+        black 26 22 38
+        red 217 140 140
+        green 168 217 176
+        yellow 232 217 160
+        blue 143 211 232
+        magenta 183 156 237
+        cyan 143 211 232
+        white 156 144 181
+        orange 240 184 208
+    }
+}
+
+theme "sewerwave"
+
+default_shell "zsh"
+
+pane_frames true
+simplified_ui true
+
+mouse_mode true
+scrollback_buffer_size 10000
+
+copy_on_select true
+copy_command "xclip -selection clipboard -in"
