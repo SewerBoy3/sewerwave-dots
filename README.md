@@ -1,118 +1,111 @@
 # sewerdots
 
+[![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-1793D1?style=for-the-badge&logo=arch-linux)](https://archlinux.org) [![i3wm](https://img.shields.io/badge/WM-i3-black?style=for-the-badge&logo=i3)](https://i3wm.org) [![Brave](https://img.shields.io/badge/Browser-Brave-ED713A?style=for-the-badge&logo=brave)](https://brave.com) [![AUR](https://img.shields.io/badge/AUR-supported-FF9900?style=for-the-badge)](https://aur.archlinux.org)
+
 ```text
-       ███████╗███████╗██╗    ██╗███████╗██████╗
-       ██╔════╝██╔════╝██║    ██║██╔════╝██╔══██╗
-       ███████╗█████╗  ██║ █╗ ██║█████╗  ██████╔╝
-       ╚════██║██╔══╝  ██║███╗██║██╔══╝  ██╔══██╗
-       ███████║███████╗╚███╔███╔╝███████╗██║  ██║
-       ╚══════╝╚══════╝ ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝
-
-          ██████╗  ██████╗ ████████╗ ███████╗
-          ██╔══██╗ ██╔══██╗╚══██╔══╝ ██╔════╝
-          ██║  ██║ ██║  ██║   ██║    ███████╗
-          ██║  ██║ ██║  ██║   ██║    ╚════██║
-          ██████╔╝ ██████╔╝   ██║    ███████║
-          ╚═════╝  ╚═════╝    ╚═╝    ╚══════╝
-
-  ───────────────────────────────────────────────────────
-              Fafa  ·  synthwave
-                 i3  ·  X11  ·  ligero
+╔════════════════════════════════════════╗
+║         sewerdots — synthwave          ║
+║   Arch Linux + i3wm + branding minimal ║
+╚════════════════════════════════════════╝
 ```
 
-> Dotfiles e instalador para Arch Linux + i3wm
-> Synthwave pastel · bajo consumo · setup en una sola pasada
+> Dotfiles e instalador para Arch Linux + i3wm.
+> Estética synthwave pastel con funcionalidad ligera.
 
-## ¿Qué es sewerdots?
+---
 
-**sewerdots** transforma una instalación base de Arch Linux en un escritorio completo, elegante y funcional, con una sola ejecución de `./install.sh`.
+## Qué es sewerdots
 
-Está pensado para equipos modestos y para quienes prefieren un flujo claro, sin tener que armar el entorno a mano. La idea es similar a la de [Omakub](https://omakub.org) y [Omarchy](https://omarchy.org): una única entrada para dejar todo listo. La diferencia principal es que aquí se usa **i3wm sobre X11**, con foco en compatibilidad, estabilidad y bajo consumo de RAM.
+`sewerdots` instala y configura un entorno i3wm desde una base mínima de Arch Linux.
 
-### Lo que incluye
+El proyecto está hecho para equipos modestos y para quienes buscan un setup rápido, limpio y coherente con estética retro-futurista.
 
-- **Web:** Antigravity, Brave, Node.js, git, SQLite/MariaDB
-- **Videojuegos:** Godot 4, Mesa (compatibilidad/GLES3 recomendado)
-- **Audio y contenido:** LMMS, PipeWire con perfil de baja latencia
+### Características principales
 
-Las apps pesadas no se autoinician por defecto, así que el escritorio se mantiene ligero y responsive.
+- Instalación guiada en TUI
+- Navegador Brave por defecto
+- i3wm sobre X11
+- Polybar, picom, kitty, rofi y fastfetch
+- Workflows para web, gamedev y audio/contenido
+
+---
+
+## Qué incluye
+
+- **Web:** Brave, Node.js, git, SQLite, MariaDB
+- **Videojuegos:** Godot 4, Mesa
+- **Audio y contenido:** LMMS, PipeWire baja latencia
+- **Escritorio:** i3wm, polybar, picom, kitty, rofi
+
+El sistema queda liviano: las apps pesadas no se ejecutan al inicio.
 
 ---
 
 ## Requisitos
 
-- Arch Linux instalado en base (sin metapaquete de escritorio)
+- Arch Linux base instalado
 - Conexión a internet
-- Usuario normal con `sudo`
-- `base-devel` (el instalador lo instala si falta)
+- Usuario con `sudo`
+- `base-devel` disponible (se instala si falta)
 
 ---
 
 ## Instalación
 
-Al ejecutar `./install.sh` se abre un asistente TUI en 5 pasos: bienvenida, workflows, sistema, escritorio y confirmación. Al terminar, guarda tu configuración en `~/.config/sewerdots/installer/choices.conf`.
-
-### 1) Cloná el repositorio
-
 ```bash
 git clone https://github.com/SewerBoy3/sewerwave-dots.git ~/sewerdots
 cd ~/sewerdots
-```
-
-### 2) Ejecutá el instalador
-
-```bash
 ./install.sh
 ```
 
-> El proceso está guiado por una interfaz tipo terminal, con estética de instalación y pasos claros.
+El instalador abre un asistente en 5 pasos: bienvenida, workflow, sistema, escritorio y confirmación.
 
-### 3) Personalización avanzada
+---
+
+## Personalización
 
 ```bash
-./scripts/sewer-config              # hub completo (sin instalar)
-./install.sh --configure            # alias al configurador
+./scripts/sewer-config              # Hub completo sin instalar
+./install.sh --configure            # Configura sin ejecutar todo el instalador
 ./install.sh --export-config ~/mi.conf
-./install.sh --config ~/mi.conf -y  # reinstalar con tu config
+./install.sh --config ~/mi.conf -y  # Reinstala con tu config
 ```
 
-Documentación completa de claves en [config/installer/CONFIG.md](config/installer/CONFIG.md).
+Leé [config/installer/CONFIG.md](config/installer/CONFIG.md) para ver todas las opciones.
 
-El hub permite ajustar workflows por componente, i3 gaps, módulos de polybar, picom, PipeWire, paquetes, servicios, rutas e import/export, sin crear carpetas ni estructuras automáticas en tu home.
+---
 
-### One-liner (revisá el script antes)
+## Nota importante
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/SewerBoy3/sewerwave-dots/main/install.sh | bash
-```
-
-> Pipear `curl` a `bash` no permite revisar el código antes de ejecutarlo. Lo ideal es clonar el repo y leer el instalador y los scripts antes de correrlo.
-
-El log completo queda en `~/.sewerwave-install.log`.
+El instalador no crea carpetas automáticas en tu home. Este repo ofrece configuración y base de escritorio sin imponer estructuras personales.
 
 ---
 
 ## Después de instalar
 
-1. **Cerrá sesión y volvé a entrar** (o reiniciá) para arrancar la sesión gráfica con i3.
-2. Verificá el consumo de RAM en reposo:
+1. Reiniciá o cerrá sesión y volvé a entrar.
+2. Verificá el consumo de RAM:
 
 ```bash
 free -h
 ```
 
-El objetivo es rondar los **~300 MB** justo tras iniciar sesión, sin aplicaciones abiertas.
+La meta es mantener el sistema ligero sin apps abiertas.
 
-### Login gráfico opcional (`ly`)
+---
 
-Por defecto se usa **autologin en tty + `startx`**. Si preferís un gestor de login mínimo:
+## Login gráfico opcional
+
+Por defecto se usa **autologin en tty + `startx`**.
+
+Para usar un login manager mínimo:
 
 ```bash
 sudo pacman -S ly
 sudo systemctl enable ly.service
 ```
 
-Comentá el bloque de `startx` en `~/.config/zsh/.zprofile`.
+Comentá el bloque de `startx` en `~/.config/zsh/.zprofile` si activás `ly`.
 
 ---
 
@@ -124,7 +117,7 @@ sewerdots/
 ├── config/             # Configs enlazadas a ~/.config/*
 ├── scripts/            # Pasos modulares de instalación
 ├── assets/             # Wallpaper, paleta y branding
-└── workspace/          # Documentación de referencia para el entorno
+└── workspace/          # Documentación de referencia
 ```
 
 ---
@@ -134,7 +127,7 @@ sewerdots/
 | Teclas | Acción |
 |--------|--------|
 | `Mod+Return` | Terminal (kitty) |
-| `Mod+d` | Lanzador de apps (rofi) |
+| `Mod+d` | Lanzador (rofi) |
 | `Mod+Shift+q` | Cerrar ventana |
 | `Mod+1–0` | Cambiar workspace |
 | `Mod+Shift+1–0` | Mover ventana a workspace |
@@ -143,8 +136,8 @@ sewerdots/
 
 ## Créditos
 
-Hecho para **Sewer boy** — synthwave pastel para el underground.
+Hecho para **Sewer boy** con estética synthwave pastel.
 
 ## Licencia
 
-MIT — ver [LICENSE](LICENSE).
+MIT — [LICENSE](LICENSE).
