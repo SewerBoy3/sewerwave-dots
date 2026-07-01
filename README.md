@@ -1,143 +1,112 @@
-# sewerwave-dots
+# sewerdots
 
-**Synthwave Pastel dotfiles for Arch Linux + i3wm — built for Sewer boy.**
-
-> One command turns a minimal Arch install into a complete, opinionated desktop — light on RAM, heavy on vibe.
-
-Inspired philosophically by [Omakub](https://omakub.org) and [Omarchy](https://omarchy.org): a single entry point, zero manual ricing afterward. Unlike Omarchy (Hyprland/Wayland), **sewerwave-dots uses i3wm on X11** — deliberate choice for old integrated GPUs and 4 GB RAM machines.
+**Dotfiles e instalador para Arch Linux + i3wm — estética Synthwave Pastel de Sewer boy.**
 
 <!-- TODO: screenshot -->
 
-## Features
+## Objetivo
 
-- **i3-wm** (official package, native gaps — no `i3-gaps` fork)
-- **Synthwave Pastel** palette across i3, picom, polybar, rofi, kitty, starship, zellij, fastfetch
-- **~300 MB idle target** (i3 + picom + polybar + wallpaper, no apps open)
-- **TTY autologin + startx** — no GDM/SDDM/LightDM bloat (`ly` documented as optional alternative)
-- **zRAM** via `zram-generator` (zstd, swappiness 180)
-- **Workflow dirs:** `~/Developer`, `~/GameDev`, `~/Studio`
-- **Heavy apps on demand:** Antigravity, Godot 4, LMMS — never autostarted
+**sewerdots** convierte una instalación base de Arch Linux (sin entorno de escritorio) en un sistema completo, listo para trabajar, con una sola ejecución de `./install.sh`.
 
-## Prerequisites
+Está pensado para hardware modesto — **Celeron de 2 núcleos y 4 GB de RAM** — y prioriza consumo bajo de recursos sobre efectos visuales pesados. La filosofía es similar a [Omakub](https://omakub.org) y [Omarchy](https://omarchy.org): un único punto de entrada, sin ricing manual después. A diferencia de Omarchy (Hyprland/Wayland), **sewerdots usa i3wm sobre X11** a propósito: mejor compatibilidad con gráficos integrados viejos y menos RAM en reposo (~300 MB con i3, picom, polybar y wallpaper, sin apps abiertas).
 
-- Fresh **Arch Linux** base install (no desktop meta-package)
-- Internet connection
-- Non-root user with **sudo**
-- **base-devel** (installed automatically if missing)
+Incluye tres flujos de trabajo opcionales:
 
-## Installation
+- **Web:** Antigravity, Chromium, Node.js, git, SQLite/MariaDB
+- **Videojuegos:** Godot 4, Mesa (renderer Compatibility/GLES3 recomendado)
+- **Audio y contenido:** LMMS, PipeWire con perfil de baja latencia
+
+Las apps pesadas **no se autoinician**; el escritorio queda liviano para que corran bajo demanda.
+
+## Requisitos
+
+- Arch Linux instalado en base (sin metapaquete de escritorio)
+- Conexión a internet
+- Usuario normal con **sudo**
+- **base-devel** (el instalador lo instala si falta)
+
+## Instalación
+
+Al ejecutar `./install.sh` se abre un **asistente TUI en 5 pasos** (gum): bienvenida, workflows, sistema, escritorio y confirmación. Al terminar guarda tu config en `~/.config/sewerdots/installer/choices.conf`.
+
+Cloná el repositorio y ejecutá el instalador:
 
 ```bash
-git clone https://github.com/SewerBoy3/sewerwave-dots.git ~/sewerwave-dots
-cd ~/sewerwave-dots
+git clone https://github.com/SewerBoy3/sewerwave-dots.git ~/sewerdots
+cd ~/sewerdots
 ./install.sh
 ```
 
-Non-interactive:
+### Personalización avanzada
 
 ```bash
-./install.sh --yes
+./scripts/sewer-config              # hub completo (sin instalar)
+./install.sh --configure            # alias al configurador
+./install.sh --export-config ~/mi.conf
+./install.sh --config ~/mi.conf -y  # reinstalar con tu config
 ```
 
-### One-liner (review before running)
+Documentación de **todas las claves**: [`config/installer/CONFIG.md`](config/installer/CONFIG.md)
+
+El hub permite ajustar workflows por componente, i3 gaps, módulos polybar, picom, PipeWire, paquetes, servicios, rutas, import/export.
+
+### One-liner (revisá el script antes)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/SewerBoy3/sewerwave-dots/main/install.sh | bash
 ```
 
-> **Security:** piping curl to bash skips your chance to audit the script. Clone the repo and read `install.sh` + `scripts/` first.
+> **Seguridad:** pipear `curl` a `bash` no te deja auditar el código. Preferí clonar el repo y leer `install.sh` y `scripts/` antes de ejecutar.
 
-Log file: `~/.sewerwave-install.log`
+El log completo queda en `~/.sewerwave-install.log`.
 
-After install, **log out and back in** (or reboot), then verify baseline RAM:
+### Después de instalar
+
+1. **Cerrá sesión y volvé a entrar** (o reiniciá) para arrancar la sesión gráfica con i3.
+2. Verificá el consumo de RAM en reposo:
 
 ```bash
 free -h
 ```
 
-## Optional: graphical login with `ly`
+El objetivo es ~300 MB justo tras iniciar sesión, sin aplicaciones abiertas.
 
-If you prefer a TUI display manager over tty autologin:
+### Login gráfico opcional (`ly`)
+
+Por defecto se usa **autologin en tty + `startx`**. Si preferís un gestor de login mínimo:
 
 ```bash
 sudo pacman -S ly
 sudo systemctl enable ly.service
 ```
 
-Comment out the `startx` block in `~/.config/zsh/.zprofile`.
+Comentá el bloque de `startx` en `~/.config/zsh/.zprofile`.
 
-## Repository structure
+## Estructura del repositorio
 
 ```
-sewerwave-dots/
-├── install.sh              # Orchestrator (runs scripts/ in order)
-├── config/                 # Symlinked to ~/.config/*
-├── scripts/                # Modular install steps
-├── assets/                 # Wallpaper, palette, branding
-└── workspace/              # Docs for ~/Developer, ~/GameDev, ~/Studio
+sewerdots/
+├── install.sh          # Orquestador (ejecuta scripts/ en orden)
+├── config/             # Se enlaza a ~/.config/*
+├── scripts/            # Pasos modulares de instalación
+├── assets/             # Wallpaper, paleta, branding
+└── workspace/          # Documentación de ~/Developer, ~/GameDev, ~/Studio
 ```
 
-## Palette (Synthwave Pastel)
+## Atajos de i3
 
-| Token | Hex | Use |
-|-------|-----|-----|
-| bg | `#1A1626` | Main background |
-| bg-alt | `#221D33` | Panels, bars |
-| border-inactive | `#3A3354` | Inactive borders |
-| fg | `#E8E1F5` | Primary text |
-| fg-muted | `#9C90B5` | Secondary text |
-| accent-purple | `#B79CED` | Focus, active borders |
-| accent-red | `#D98C8C` | Secondary accent |
-| accent-cyan | `#8FD3E8` | Secondary accent |
-| accent-pink | `#F0B8D0` | Tertiary accent |
-| accent-green | `#A8D9B0` | Terminal success only |
-| accent-yellow | `#E8D9A0` | Terminal warnings only |
-
-Machine-readable: `assets/branding/palette.json`
-
-## Keybindings (i3)
-
-| Keys | Action |
-|------|--------|
+| Teclas | Acción |
+|--------|--------|
 | `Mod+Return` | Terminal (kitty) |
-| `Mod+d` | App launcher (rofi drun) |
-| `Mod+Shift+q` | Kill window |
-| `Mod+1–0` | Switch workspace |
-| `Mod+Shift+1–0` | Move window to workspace |
+| `Mod+d` | Lanzador de apps (rofi) |
+| `Mod+Shift+q` | Cerrar ventana |
+| `Mod+1–0` | Cambiar workspace |
+| `Mod+Shift+1–0` | Mover ventana a workspace |
 
-## Services
+## Créditos
 
-**Enabled:** NetworkManager, PipeWire, WirePlumber (user)
+Hecho para **Sewer boy** — synthwave pastel para el underground.
 
-**Disabled by default:** CUPS, Avahi, Bluetooth, MariaDB (installed but not running — start with `sudo systemctl start mariadb` when needed)
+## Licencia
 
-## Workflows
-
-See [workspace/README.md](workspace/README.md) for directory layouts.
-
-### Web dev
-Antigravity (AUR or official tarball), Chromium, Node.js, npm, git, SQLite, MariaDB.
-
-### Game dev
-Godot 4.x, Mesa — use **Compatibility (GLES3)** renderer on integrated graphics.
-
-### Audio / content
-LMMS, PipeWire low-latency config. Tune `min-quantum` in `99-lowlatency.conf` if your interface allows.
-
-## picom notes
-
-- Blur **off** by default (`blur-method = "none"`)
-- `corner-radius = 10`
-- Backend `glx`; switch to `xrender` in `~/.config/picom/picom.conf` if unstable
-
-## Hardware assumptions
-
-Designed for **2-core Celeron + 4 GB RAM**. If idle RAM exceeds ~300 MB after login, check for autostart apps or user services.
-
-## Credits
-
-Built for **Sewer boy** — synthwave pastel ricing for the underground.
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+MIT — ver [LICENSE](LICENSE).

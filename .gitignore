@@ -5,8 +5,8 @@
 # Backups created during install
 .config-backup-*
 
-# Cache
-.cache/
+# Local installer overrides (copy from local.conf.example)
+config/installer/local.conf
 
 # OS
 .DS_Store

@@ -1,12 +1,30 @@
 #!/usr/bin/env bash
-# Detect or build AUR helper (paru preferred)
+# Detect or build AUR helper (configurable)
 set -euo pipefail
 
 # shellcheck source=lib/helpers.sh
 source "${SEWERWAVE_REPO_ROOT}/scripts/lib/helpers.sh"
 
+PREFERENCE="${SEWER_AUR_HELPER:-auto}"
+
+if [[ "$PREFERENCE" == "yay" ]]; then
+    if command -v yay &>/dev/null; then
+        log_ok "AUR helper: yay"
+        exit 0
+    fi
+    log_error "Forzaste yay pero no está instalado. Instalalo manualmente o usá --profile con aur_helper=auto"
+    exit 1
+fi
+
+if [[ "$PREFERENCE" == "paru" ]] && command -v paru &>/dev/null; then
+    log_ok "AUR helper: paru"
+    exit 0
+fi
+
 if helper="$(detect_aur_helper)"; then
     log_ok "AUR helper found: $helper"
+    [[ "$PREFERENCE" == "paru" && "$helper" != "paru" ]] && \
+        log_warn "Preferiste paru pero se detectó ${helper}"
     exit 0
 fi
 
@@ -28,9 +46,5 @@ else
     makepkg -si
 fi
 
-if command -v paru &>/dev/null; then
-    log_ok "paru installed successfully"
-else
-    log_error "paru build finished but paru is not in PATH"
-    exit 1
-fi
+command -v paru &>/dev/null || { log_error "paru build failed"; exit 1; }
+log_ok "paru installed successfully"

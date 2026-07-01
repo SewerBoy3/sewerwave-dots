@@ -1,34 +1,27 @@
 #!/usr/bin/env bash
-# Audio/content production: PipeWire tuning, LMMS, Studio dirs
+# Audio/content workflow (granular)
 set -euo pipefail
 
-# shellcheck source=lib/helpers.sh
 source "${SEWERWAVE_REPO_ROOT}/scripts/lib/helpers.sh"
+source "${SEWERWAVE_REPO_ROOT}/scripts/lib/installer-config.sh"
+installer_config_init
+installer_config_apply_to_env
 
-if ! confirm_or_skip "Install audio/content workflow (LMMS, Studio dirs)?"; then
-    log_info "Skipping audio/content workflow"
-    exit 0
-fi
+[[ "${SEWER_INSTALL_AUDIO:-0}" == "1" ]] || { log_info "Audio desactivado"; exit 0; }
+
+STUDIO_ROOT="${SEWER_STUDIO_DIR:-${HOME}/Studio}"
 
 install_pacman_pkgs pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
 
-if ! require_aur_pkg lmms; then
+if [[ "${SEWER_WORKFLOWS_AUDIO_LMMS:-1}" == "1" ]]; then
     install_aur_pkg lmms
 fi
 
-STUDIO_DIRS=(
-    "${HOME}/Studio/music/lmms-projects"
-    "${HOME}/Studio/music/samples"
-    "${HOME}/Studio/music/soundfonts"
-    "${HOME}/Studio/content/guiones"
-    "${HOME}/Studio/content/videos/raw"
-    "${HOME}/Studio/content/videos/editados"
-    "${HOME}/Studio/content/miniaturas"
-)
-
-for dir in "${STUDIO_DIRS[@]}"; do
-    ensure_dir "$dir"
-done
+if [[ "${SEWER_WORKFLOWS_CREATE_WORKDIRS:-1}" == "1" ]]; then
+    ensure_dir "${STUDIO_ROOT}/music/lmms-projects"
+    ensure_dir "${STUDIO_ROOT}/music/samples"
+    ensure_dir "${STUDIO_ROOT}/content/guiones"
+    ensure_dir "${STUDIO_ROOT}/content/videos/raw"
+fi
 
 log_ok "Audio/content workflow ready"
-log_info "PipeWire low-latency config at ~/.config/pipewire/pipewire.conf.d/99-lowlatency.conf"

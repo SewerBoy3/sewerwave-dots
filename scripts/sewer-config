@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# sewerdots — configurador standalone (sin instalar)
+set -euo pipefail
+
+SEWERWAVE_REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export SEWERWAVE_REPO_ROOT
+export SEWERWAVE_NONINTERACTIVE=0
+export SEWER_PROFILE="${SEWER_PROFILE:-default}"
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --export)
+            shift
+            dest="${1:?falta ruta de export}"
+            source "${SEWERWAVE_REPO_ROOT}/scripts/lib/helpers.sh"
+            source "${SEWERWAVE_REPO_ROOT}/scripts/lib/installer-config.sh"
+            installer_config_init
+            installer_config_export_file "$dest" >/dev/null
+            echo "Exportado → $dest"
+            exit 0
+            ;;
+        --profile)
+            SEWER_PROFILE="${2:?}"
+            export SEWER_PROFILE
+            shift 2
+            ;;
+        -h | --help)
+            cat <<'EOF'
+Usage: ./scripts/sewer-config [OPTIONS]
+
+Hub interactivo para personalizar sewerdots sin instalar.
+Guarda en config/installer/local.conf o exporta un .conf.
+
+Options:
+  --export FILE    Exportar config actual
+  --profile NAME   Perfil base (default, minimal, full)
+  -h, --help
+EOF
+            exit 0
+            ;;
+        *) echo "Opción desconocida: $1" >&2; exit 1 ;;
+    esac
+done
+
+source "${SEWERWAVE_REPO_ROOT}/scripts/lib/helpers.sh"
+source "${SEWERWAVE_REPO_ROOT}/scripts/lib/installer-config.sh"
+source "${SEWERWAVE_REPO_ROOT}/scripts/lib/tui.sh"
+
+installer_config_init
+tui_ensure_gum || true
+tui_configure_gum
+
+if tui_gum_ready; then
+    installer_menu_hub
+    dest="${SEWERWAVE_REPO_ROOT}/config/installer/local.conf"
+    if gum confirm --default=true "¿Guardar en config/installer/local.conf?" </dev/tty >/dev/tty; then
+        installer_config_export_file "$dest" >/dev/null
+        gum style --foreground "#${TUI_PURPLE}" "Guardado → ${dest}" >/dev/tty
+        gum style --foreground "#${TUI_MUTED}" "Instalá con: ./install.sh -y" >/dev/tty
+    fi
+else
+    echo "Se requiere gum para el configurador interactivo."
+    echo "Editá config/installer/local.conf manualmente (ver CONFIG.md)."
+    exit 1
+fi

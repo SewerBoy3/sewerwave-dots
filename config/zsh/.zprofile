@@ -1,16 +1,14 @@
-# sewerwave-dots — zprofile (autologin tty + startx on X11)
+# sewerdots — opciones del instalador
+[[ -f "${HOME}/.config/sewerdots/installer.env" ]] && source "${HOME}/.config/sewerdots/installer.env"
 
-# Start X11 session on first login to tty1 (no display manager)
-if [[ -z "${DISPLAY:-}" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
-    if command -v startx &>/dev/null; then
-        exec startx
-    fi
-fi
-
-# Default editor
-export EDITOR="${EDITOR:-nano}"
+export EDITOR="${SEWER_DEFAULT_EDITOR:-${EDITOR:-nano}}"
 export VISUAL="${VISUAL:-$EDITOR}"
-
-# XDG
 export XDG_CURRENT_DESKTOP=i3
 export XDG_SESSION_TYPE=x11
+
+# startx en tty1 (si no usás ly ni login manual)
+if [[ "${SEWER_LOGIN_METHOD:-startx}" == "startx" ]]; then
+    if [[ -z "${DISPLAY:-}" ]] && [[ "$(tty)" == "/dev/tty1" ]]; then
+        command -v startx &>/dev/null && exec startx
+    fi
+fi

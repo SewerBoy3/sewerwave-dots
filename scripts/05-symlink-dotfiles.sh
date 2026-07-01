@@ -73,4 +73,14 @@ else
     log_ok "~/.xinitrc already exists (not overwritten)"
 fi
 
+mkdir -p "${HOME}/.config/sewerdots"
+for seed in polybar-overrides.ini; do
+    src="${CONFIG_ROOT}/sewerdots/${seed}"
+    dest="${HOME}/.config/sewerdots/${seed}"
+    if [[ -f "$src" && ! -e "$dest" ]]; then
+        cp "$src" "$dest"
+        log_ok "Seeded ${dest}"
+    fi
+done
+
 log_ok "Dotfile symlinks complete"

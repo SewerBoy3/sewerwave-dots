@@ -5,6 +5,11 @@ set -euo pipefail
 # shellcheck source=lib/helpers.sh
 source "${SEWERWAVE_REPO_ROOT}/scripts/lib/helpers.sh"
 
+if [[ "${SEWER_CHANGE_SHELL:-1}" != "1" ]]; then
+    log_info "Omitiendo chsh (config del instalador)"
+    exit 0
+fi
+
 ZSH_PATH="$(command -v zsh)"
 
 if [[ -z "$ZSH_PATH" ]]; then

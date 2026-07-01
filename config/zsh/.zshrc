@@ -21,7 +21,9 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Starship prompt
-eval "$(starship init zsh)"
+if [[ "${SEWER_STARSHIP_PROMPT:-1}" == "1" ]] && command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
 
 # Aliases
 alias ls='ls --color=auto'
@@ -31,16 +33,19 @@ alias gs='git status -sb'
 alias gc='git commit'
 alias gp='git push'
 
-# Launch fastfetch on new interactive terminals (skip in subshells/ssh)
+# sewerdots — opciones del instalador
+[[ -f "${HOME}/.config/sewerdots/installer.env" ]] && source "${HOME}/.config/sewerdots/installer.env"
+
+# Launch fastfetch on new interactive terminals
 if [[ -o interactive ]] && [[ -z "${FASTFETCH_SKIP:-}" ]]; then
-    if command -v fastfetch &>/dev/null; then
+    if [[ "${SEWER_FASTFETCH_TERMINAL:-1}" == "1" ]] && command -v fastfetch &>/dev/null; then
         fastfetch
     fi
 fi
 
 # Zellij in kitty — avoid nested sessions
-if [[ -n "${KITTY_WINDOW_ID:-}" && -z "${ZELLIJ:-}" ]]; then
-    if command -v zellij &>/dev/null; then
+if [[ "${SEWER_ZELLIJ_AUTOSTART:-1}" == "1" ]]; then
+    if [[ -n "${KITTY_WINDOW_ID:-}" && -z "${ZELLIJ:-}" ]] && command -v zellij &>/dev/null; then
         export ZELLIJ_AUTO_ATTACH=1
         eval "$(zellij setup --generate-auto-start zsh)"
     fi

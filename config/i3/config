@@ -7,8 +7,7 @@ set $menu rofi -show drun -theme ~/.config/rofi/themes/sewerwave.rasi
 
 font pango:JetBrainsMono Nerd Font 10
 
-gaps inner 8
-gaps outer 4
+include ~/.config/sewerdots/i3-overrides.conf
 
 client.focused          #B79CED #221D33 #E8E1F5 #B79CED #B79CED
 client.focused_inactive #3A3354 #221D33 #9C90B5 #3A3354 #3A3354
@@ -16,14 +15,11 @@ client.unfocused        #3A3354 #1A1626 #9C90B5 #3A3354 #3A3354
 client.urgent           #D98C8C #221D33 #E8E1F5 #D98C8C #D98C8C
 
 for_window [class="^.*"] title_format "%class: %title"
-assign [class="Godot"] → 3
 
 floating_modifier $mod
 
 exec --no-startup-id feh --bg-fill $HOME/.local/share/sewerwave/wallpaper.png
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY XDG_CURRENT_DESKTOP
+include ~/.config/sewerdots/i3-autostart.conf
 
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
