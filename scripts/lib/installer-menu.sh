@@ -50,8 +50,7 @@ installer_menu_sub_workflows() {
     installer_menu_pick_multi_bools "Flujos principales" "" \
         "workflows.webdev|Desarrollo web" \
         "workflows.gamedev|Desarrollo de juegos" \
-        "workflows.audio|Audio y contenido" \
-        "workflows.create_workdirs|Crear carpetas ~/Developer, ~/GameDev, ~/Studio"
+        "workflows.audio|Audio y contenido"
 
     installer_menu_pick_multi_bools "Componentes web" "" \
         "workflows.webdev_nodejs|Node.js + npm + git" \

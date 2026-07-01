@@ -78,7 +78,7 @@ cd ~/sewerdots
 
 Documentación completa de claves en [config/installer/CONFIG.md](config/installer/CONFIG.md).
 
-El hub permite ajustar workflows por componente, i3 gaps, módulos de polybar, picom, PipeWire, paquetes, servicios, rutas e import/export.
+El hub permite ajustar workflows por componente, i3 gaps, módulos de polybar, picom, PipeWire, paquetes, servicios, rutas e import/export, sin crear carpetas ni estructuras automáticas en tu home.
 
 ### One-liner (revisá el script antes)
 
@@ -124,7 +124,7 @@ sewerdots/
 ├── config/             # Configs enlazadas a ~/.config/*
 ├── scripts/            # Pasos modulares de instalación
 ├── assets/             # Wallpaper, paleta y branding
-└── workspace/          # Documentación para ~/Developer, ~/GameDev, ~/Studio
+└── workspace/          # Documentación de referencia para el entorno
 ```
 
 ---
