@@ -29,7 +29,7 @@ readonly -A INSTALLER_DEFAULTS=(
     [system.change_shell]=1
     [system.default_editor]=nano
     [system.timezone]=auto
-    [browser.browser]=chromium
+    [browser.browser]=brave
     [desktop.terminal]=kitty
     [desktop.enable_picom]=1
     [desktop.enable_polybar]=1
@@ -152,7 +152,7 @@ installer_config_apply_to_env() {
     export SEWER_ZRAM_ALGORITHM="$(installer_cfg_get system.zram_algorithm zstd)"
     export SEWER_AUR_HELPER="$(installer_cfg_get system.aur_helper auto)"
     export SEWER_CHANGE_SHELL="$(installer_cfg_get system.change_shell 1)"
-    export SEWER_BROWSER="$(installer_cfg_get browser.browser chromium)"
+    export SEWER_BROWSER="$(installer_cfg_get browser.browser brave)"
     export SEWER_ENABLE_PICOM="$(installer_cfg_get desktop.enable_picom 1)"
     export SEWER_ENABLE_POLYBAR="$(installer_cfg_get desktop.enable_polybar 1)"
     export SEWER_FASTFETCH_TERMINAL="$(installer_cfg_get desktop.fastfetch_on_terminal 1)"

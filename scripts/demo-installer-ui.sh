@@ -34,7 +34,7 @@ for entry in "${steps[@]}"; do
             printf '\n  ◉ Desarrollo web\n  ◉ GameDev\n  ◉ Audio\n'
             ;;
         3)
-            printf '\n  Login: startx · zRAM: equilibrado · AUR: auto · Browser: chromium\n'
+            printf '\n  Login: startx · zRAM: equilibrado · AUR: auto · Browser: brave\n'
             ;;
         4)
             printf '\n  ◉ picom  ◉ polybar  ◉ fastfetch  ◉ zellij\n'

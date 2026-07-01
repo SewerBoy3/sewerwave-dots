@@ -1,21 +1,34 @@
-# Workspace directories
+# Workspace
 
-The installer creates three workflow trees under `$HOME`:
-
-## ~/Developer (Web full-stack)
-
+```text
+██╗    ██╗ ██████╗ ███████╗██╗  ██╗
+██║    ██║██╔═══██╗██╔════╝██║ ██╔╝
+██║ █╗ ██║██║   ██║█████╗  █████╔╝
+██║███╗██║██║   ██║██╔══╝  ██╔═██╗
+╚███╔███╔╝╚██████╔╝███████╗██║  ██╗
+ ╚══╝╚══╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
 ```
+
+> Directorios de trabajo preparados por el instalador para organizar tus flujos de trabajo.
+
+El instalador crea tres árboles de trabajo bajo `$HOME`:
+
+## ~/Developer · Web full-stack
+
+```text
 Developer/
-├── crumbskate-ecommerce/    # E-commerce projects
-├── sewer-world-dashboard/   # Dashboard / admin apps
-└── sandbox/                 # Experiments, prototypes
+├── crumbskate-ecommerce/    # Proyectos de e-commerce
+├── sewer-world-dashboard/   # Dashboards y apps de administración
+└── sandbox/                 # Experimentos y prototipos
 ```
 
-Stack: Node.js, npm, Chromium, Antigravity (on demand), SQLite, MariaDB (manual start).
+Stack: Node.js, npm, Brave, Antigravity (según se necesite), SQLite y MariaDB (inicio manual).
 
-## ~/GameDev (Godot 4)
+---
 
-```
+## ~/GameDev · Godot 4
+
+```text
 GameDev/
 ├── the-last-crumb/
 │   ├── project/
@@ -28,18 +41,20 @@ GameDev/
 └── shared-resources/{pixel-art-refs,godot-addons}/
 ```
 
-**Tip:** On integrated graphics (Celeron), set Godot **Project → Renderer → Compatibility (GLES3)**.
+**Consejo:** en tarjetas gráficas integradas como las de un Celeron, configura Godot en **Project → Renderer → Compatibility (GLES3)**.
 
-Godot windows auto-assign to **workspace 3** in i3.
+Las ventanas de Godot se asignan automáticamente al **workspace 3** en i3.
 
-## ~/Studio (Music & content)
+---
 
-```
+## ~/Studio · Música y contenido
+
+```text
 Studio/
 ├── music/{lmms-projects,samples,soundfonts}/
 └── content/{guiones,videos/raw,videos/editados,miniaturas}/
 ```
 
-PipeWire low-latency defaults: `~/.config/pipewire/pipewire.conf.d/99-lowlatency.conf`
+Los valores por defecto de PipeWire para baja latencia quedan en `~/.config/pipewire/pipewire.conf.d/99-lowlatency.conf`.
 
-Lower `default.clock.min-quantum` (e.g. 128 → 64) only if your audio interface supports it without xruns.
+Bajá `default.clock.min-quantum` (por ejemplo, de 128 a 64) solo si tu interfaz de audio lo soporta sin xruns.

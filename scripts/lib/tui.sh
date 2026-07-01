@@ -258,9 +258,10 @@ tui_wizard_step_system() {
     installer_cfg_set system.change_shell "$([[ "${shell%%|*}" == yes ]] && echo 1 || echo 0)"
 
     browser="$(tui_gum_choose_one "Navegador web" \
+        "brave|Brave" \
         "chromium|Chromium (liviano)" \
-        "chrome|Google Chrome (AUR, si lo necesitás)" || echo "chromium|Chromium")"
-    installer_cfg_set system.browser "${browser%%|*}"
+        "chrome|Google Chrome (AUR, si lo necesitás)" || echo "brave|Brave")"
+    installer_cfg_set browser.browser "${browser%%|*}"
 }
 
 tui_wizard_step_desktop() {

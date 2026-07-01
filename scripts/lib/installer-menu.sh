@@ -93,6 +93,7 @@ installer_menu_sub_system() {
         "0|Mantener shell actual"
 
     installer_menu_pick_one browser.browser "Navegador (workflow web)" \
+        "brave|Brave" \
         "chromium|Chromium" \
         "chrome|Google Chrome (AUR)" \
         "none|No instalar navegador"

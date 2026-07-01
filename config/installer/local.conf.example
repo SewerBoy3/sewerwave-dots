@@ -15,7 +15,7 @@ aur_helper=auto
 change_shell=1
 
 [browser]
-browser=chromium
+browser=brave
 
 [desktop]
 enable_picom=1

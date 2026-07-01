@@ -20,9 +20,10 @@ if [[ "${SEWER_WORKFLOWS_WEBDEV_MARIADB:-1}" == "1" ]]; then
     disable_system_service mariadb.service
 fi
 
-case "${SEWER_BROWSER:-chromium}" in
+case "${SEWER_BROWSER:-brave}" in
     chrome) install_aur_pkg google-chrome ;;
     chromium) install_pacman_pkg chromium ;;
+    brave) install_aur_pkg brave-bin ;;
     none) log_info "Navegador omitido (config)" ;;
 esac
 

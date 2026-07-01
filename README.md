@@ -1,43 +1,73 @@
 # sewerdots
 
-**Dotfiles e instalador para Arch Linux + i3wm — estética Synthwave Pastel de Sewer boy.**
+```text
+       ███████╗███████╗██╗    ██╗███████╗██████╗
+       ██╔════╝██╔════╝██║    ██║██╔════╝██╔══██╗
+       ███████╗█████╗  ██║ █╗ ██║█████╗  ██████╔╝
+       ╚════██║██╔══╝  ██║███╗██║██╔══╝  ██╔══██╗
+       ███████║███████╗╚███╔███╔╝███████╗██║  ██║
+       ╚══════╝╚══════╝ ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝
 
-<!-- TODO: screenshot -->
+          ██████╗  ██████╗ ████████╗ ███████╗
+          ██╔══██╗ ██╔══██╗╚══██╔══╝ ██╔════╝
+          ██║  ██║ ██║  ██║   ██║    ███████╗
+          ██║  ██║ ██║  ██║   ██║    ╚════██║
+          ██████╔╝ ██████╔╝   ██║    ███████║
+          ╚═════╝  ╚═════╝    ╚═╝    ╚══════╝
 
-## Objetivo
+  ───────────────────────────────────────────────────────
+              Fafa  ·  synthwave
+                 i3  ·  X11  ·  ligero
+```
 
-**sewerdots** convierte una instalación base de Arch Linux (sin entorno de escritorio) en un sistema completo, listo para trabajar, con una sola ejecución de `./install.sh`.
+> Dotfiles e instalador para Arch Linux + i3wm
+> Synthwave pastel · bajo consumo · setup en una sola pasada
 
-Está pensado para hardware modesto — **Celeron de 2 núcleos y 4 GB de RAM** — y prioriza consumo bajo de recursos sobre efectos visuales pesados. La filosofía es similar a [Omakub](https://omakub.org) y [Omarchy](https://omarchy.org): un único punto de entrada, sin ricing manual después. A diferencia de Omarchy (Hyprland/Wayland), **sewerdots usa i3wm sobre X11** a propósito: mejor compatibilidad con gráficos integrados viejos y menos RAM en reposo (~300 MB con i3, picom, polybar y wallpaper, sin apps abiertas).
+## ¿Qué es sewerdots?
 
-Incluye tres flujos de trabajo opcionales:
+**sewerdots** transforma una instalación base de Arch Linux en un escritorio completo, elegante y funcional, con una sola ejecución de `./install.sh`.
 
-- **Web:** Antigravity, Chromium, Node.js, git, SQLite/MariaDB
-- **Videojuegos:** Godot 4, Mesa (renderer Compatibility/GLES3 recomendado)
+Está pensado para equipos modestos y para quienes prefieren un flujo claro, sin tener que armar el entorno a mano. La idea es similar a la de [Omakub](https://omakub.org) y [Omarchy](https://omarchy.org): una única entrada para dejar todo listo. La diferencia principal es que aquí se usa **i3wm sobre X11**, con foco en compatibilidad, estabilidad y bajo consumo de RAM.
+
+### Lo que incluye
+
+- **Web:** Antigravity, Brave, Node.js, git, SQLite/MariaDB
+- **Videojuegos:** Godot 4, Mesa (compatibilidad/GLES3 recomendado)
 - **Audio y contenido:** LMMS, PipeWire con perfil de baja latencia
 
-Las apps pesadas **no se autoinician**; el escritorio queda liviano para que corran bajo demanda.
+Las apps pesadas no se autoinician por defecto, así que el escritorio se mantiene ligero y responsive.
+
+---
 
 ## Requisitos
 
 - Arch Linux instalado en base (sin metapaquete de escritorio)
 - Conexión a internet
-- Usuario normal con **sudo**
-- **base-devel** (el instalador lo instala si falta)
+- Usuario normal con `sudo`
+- `base-devel` (el instalador lo instala si falta)
+
+---
 
 ## Instalación
 
-Al ejecutar `./install.sh` se abre un **asistente TUI en 5 pasos** (gum): bienvenida, workflows, sistema, escritorio y confirmación. Al terminar guarda tu config en `~/.config/sewerdots/installer/choices.conf`.
+Al ejecutar `./install.sh` se abre un asistente TUI en 5 pasos: bienvenida, workflows, sistema, escritorio y confirmación. Al terminar, guarda tu configuración en `~/.config/sewerdots/installer/choices.conf`.
 
-Cloná el repositorio y ejecutá el instalador:
+### 1) Cloná el repositorio
 
 ```bash
 git clone https://github.com/SewerBoy3/sewerwave-dots.git ~/sewerdots
 cd ~/sewerdots
+```
+
+### 2) Ejecutá el instalador
+
+```bash
 ./install.sh
 ```
 
-### Personalización avanzada
+> El proceso está guiado por una interfaz tipo terminal, con estética de instalación y pasos claros.
+
+### 3) Personalización avanzada
 
 ```bash
 ./scripts/sewer-config              # hub completo (sin instalar)
@@ -46,9 +76,9 @@ cd ~/sewerdots
 ./install.sh --config ~/mi.conf -y  # reinstalar con tu config
 ```
 
-Documentación de **todas las claves**: [`config/installer/CONFIG.md`](config/installer/CONFIG.md)
+Documentación completa de claves en [config/installer/CONFIG.md](config/installer/CONFIG.md).
 
-El hub permite ajustar workflows por componente, i3 gaps, módulos polybar, picom, PipeWire, paquetes, servicios, rutas, import/export.
+El hub permite ajustar workflows por componente, i3 gaps, módulos de polybar, picom, PipeWire, paquetes, servicios, rutas e import/export.
 
 ### One-liner (revisá el script antes)
 
@@ -56,11 +86,13 @@ El hub permite ajustar workflows por componente, i3 gaps, módulos polybar, pico
 curl -fsSL https://raw.githubusercontent.com/SewerBoy3/sewerwave-dots/main/install.sh | bash
 ```
 
-> **Seguridad:** pipear `curl` a `bash` no te deja auditar el código. Preferí clonar el repo y leer `install.sh` y `scripts/` antes de ejecutar.
+> Pipear `curl` a `bash` no permite revisar el código antes de ejecutarlo. Lo ideal es clonar el repo y leer el instalador y los scripts antes de correrlo.
 
 El log completo queda en `~/.sewerwave-install.log`.
 
-### Después de instalar
+---
+
+## Después de instalar
 
 1. **Cerrá sesión y volvé a entrar** (o reiniciá) para arrancar la sesión gráfica con i3.
 2. Verificá el consumo de RAM en reposo:
@@ -69,7 +101,7 @@ El log completo queda en `~/.sewerwave-install.log`.
 free -h
 ```
 
-El objetivo es ~300 MB justo tras iniciar sesión, sin aplicaciones abiertas.
+El objetivo es rondar los **~300 MB** justo tras iniciar sesión, sin aplicaciones abiertas.
 
 ### Login gráfico opcional (`ly`)
 
@@ -82,16 +114,20 @@ sudo systemctl enable ly.service
 
 Comentá el bloque de `startx` en `~/.config/zsh/.zprofile`.
 
+---
+
 ## Estructura del repositorio
 
-```
+```text
 sewerdots/
-├── install.sh          # Orquestador (ejecuta scripts/ en orden)
-├── config/             # Se enlaza a ~/.config/*
+├── install.sh          # Orquestador principal
+├── config/             # Configs enlazadas a ~/.config/*
 ├── scripts/            # Pasos modulares de instalación
-├── assets/             # Wallpaper, paleta, branding
-└── workspace/          # Documentación de ~/Developer, ~/GameDev, ~/Studio
+├── assets/             # Wallpaper, paleta y branding
+└── workspace/          # Documentación para ~/Developer, ~/GameDev, ~/Studio
 ```
+
+---
 
 ## Atajos de i3
 
@@ -102,6 +138,8 @@ sewerdots/
 | `Mod+Shift+q` | Cerrar ventana |
 | `Mod+1–0` | Cambiar workspace |
 | `Mod+Shift+1–0` | Mover ventana a workspace |
+
+---
 
 ## Créditos
 
