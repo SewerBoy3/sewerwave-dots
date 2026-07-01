@@ -2,12 +2,24 @@
 
 [![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-1793D1?style=for-the-badge&logo=arch-linux)](https://archlinux.org) [![i3wm](https://img.shields.io/badge/WM-i3-black?style=for-the-badge&logo=i3)](https://i3wm.org) [![Brave](https://img.shields.io/badge/Browser-Brave-ED713A?style=for-the-badge&logo=brave)](https://brave.com) [![AUR](https://img.shields.io/badge/AUR-supported-FF9900?style=for-the-badge)](https://aur.archlinux.org)
 
-```text
-╔════════════════════════════════════════╗
-║         sewerdots — synthwave          ║
-║   Arch Linux + i3wm + branding minimal ║
-╚════════════════════════════════════════╝
-```
+${c1}       ███████╗███████╗██╗    ██╗███████╗██████╗
+${c1}       ██╔════╝██╔════╝██║    ██║██╔════╝██╔══██╗
+${c1}       ███████╗█████╗  ██║ █╗ ██║█████╗  ██████╔╝
+${c1}       ╚════██║██╔══╝  ██║███╗██║██╔══╝  ██╔══██╗
+${c1}       ███████║███████╗╚███╔███╔╝███████╗██║  ██║
+${c1}       ╚══════╝╚══════╝ ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝
+
+${c4}          ██████╗  ██████╗ ████████╗ ███████╗
+${c4}          ██╔══██╗ ██╔══██╗╚══██╔══╝ ██╔════╝
+${c4}          ██║  ██║ ██║  ██║   ██║    ███████╗
+${c4}          ██║  ██║ ██║  ██║   ██║    ╚════██║
+${c4}          ██████╔╝ ██████╔╝   ██║    ███████║
+${c4}          ╚═════╝  ╚═════╝    ╚═╝    ╚══════╝
+
+${c4}  ───────────────────────────────────────────────────────
+${c4}              Fafa  ·  synthwave 
+${c4}                 i3  ·  X11  ·  ligero
+
 
 > Dotfiles e instalador para Arch Linux + i3wm.
 > Estética synthwave pastel con funcionalidad ligera.
