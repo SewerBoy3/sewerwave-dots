@@ -2,27 +2,15 @@
 
 [![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux-1793D1?style=for-the-badge&logo=arch-linux)](https://archlinux.org) [![i3wm](https://img.shields.io/badge/WM-i3-black?style=for-the-badge&logo=i3)](https://i3wm.org) [![Brave](https://img.shields.io/badge/Browser-Brave-ED713A?style=for-the-badge&logo=brave)](https://brave.com) [![AUR](https://img.shields.io/badge/AUR-supported-FF9900?style=for-the-badge)](https://aur.archlinux.org)
 
-${c1}       ███████╗███████╗██╗    ██╗███████╗██████╗
-${c1}       ██╔════╝██╔════╝██║    ██║██╔════╝██╔══██╗
-${c1}       ███████╗█████╗  ██║ █╗ ██║█████╗  ██████╔╝
-${c1}       ╚════██║██╔══╝  ██║███╗██║██╔══╝  ██╔══██╗
-${c1}       ███████║███████╗╚███╔███╔╝███████╗██║  ██║
-${c1}       ╚══════╝╚══════╝ ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝
-
-${c4}          ██████╗  ██████╗ ████████╗ ███████╗
-${c4}          ██╔══██╗ ██╔══██╗╚══██╔══╝ ██╔════╝
-${c4}          ██║  ██║ ██║  ██║   ██║    ███████╗
-${c4}          ██║  ██║ ██║  ██║   ██║    ╚════██║
-${c4}          ██████╔╝ ██████╔╝   ██║    ███████║
-${c4}          ╚═════╝  ╚═════╝    ╚═╝    ╚══════╝
-
-${c4}  ───────────────────────────────────────────────────────
-${c4}              Fafa  ·  synthwave 
-${c4}                 i3  ·  X11  ·  ligero
-
+```text
+╔════════════════════════════════════════════════════╗
+║      sewerdots — Arch Linux + i3wm synthwave       ║
+║   minimal installer · branding · workflows ready   ║
+╚════════════════════════════════════════════════════╝
+```
 
 > Dotfiles e instalador para Arch Linux + i3wm.
-> Estética synthwave pastel con funcionalidad ligera.
+> Estética synthwave pastel con un setup ligero y funcional.
 
 ---
 
@@ -30,15 +18,15 @@ ${c4}                 i3  ·  X11  ·  ligero
 
 `sewerdots` instala y configura un entorno i3wm desde una base mínima de Arch Linux.
 
-El proyecto está hecho para equipos modestos y para quienes buscan un setup rápido, limpio y coherente con estética retro-futurista.
+Pensado para hardware modesto y usuarios que buscan un entorno rápido, estable y con identidad visual.
 
-### Características principales
+### Características clave
 
 - Instalación guiada en TUI
-- Navegador Brave por defecto
+- Brave como navegador por defecto
 - i3wm sobre X11
 - Polybar, picom, kitty, rofi y fastfetch
-- Workflows para web, gamedev y audio/contenido
+- Flujos para web, gamedev y audio/contenido
 
 ---
 
@@ -49,7 +37,7 @@ El proyecto está hecho para equipos modestos y para quienes buscan un setup rá
 - **Audio y contenido:** LMMS, PipeWire baja latencia
 - **Escritorio:** i3wm, polybar, picom, kitty, rofi
 
-El sistema queda liviano: las apps pesadas no se ejecutan al inicio.
+El sistema permanece ligero: las apps pesadas no se inician automáticamente.
 
 ---
 
@@ -89,20 +77,21 @@ Leé [config/installer/CONFIG.md](config/installer/CONFIG.md) para ver todas las
 
 ## Nota importante
 
-El instalador no crea carpetas automáticas en tu home. Este repo ofrece configuración y base de escritorio sin imponer estructuras personales.
+El instalador no crea carpetas automáticas en tu home.
+Este repo ofrece configuración y base de escritorio sin imponer estructuras personales.
 
 ---
 
 ## Después de instalar
 
 1. Reiniciá o cerrá sesión y volvé a entrar.
-2. Verificá el consumo de RAM:
+2. Comprobá la RAM en reposo:
 
 ```bash
 free -h
 ```
 
-La meta es mantener el sistema ligero sin apps abiertas.
+La meta es mantener el sistema liviano sin aplicaciones abiertas.
 
 ---
 
@@ -110,7 +99,7 @@ La meta es mantener el sistema ligero sin apps abiertas.
 
 Por defecto se usa **autologin en tty + `startx`**.
 
-Para usar un login manager mínimo:
+Para usar un gestor mínimo:
 
 ```bash
 sudo pacman -S ly
